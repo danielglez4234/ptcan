@@ -6,11 +6,12 @@ import {
     Navigate
 } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
-import Button from '@mui/material/Button';
+import { Box, Button } from '@mui/material';
 
 // import PageNotFound from './components/ControlPages/PageNotFound';
 // import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import NavBar from './components/Navbar/NavBar';
 
 function App() {
     const notistackRef = createRef()
@@ -34,18 +35,19 @@ function App() {
             )}
         >
             <Router>
-                <Routes>
-                    {/*blank path redirects to -> /WebReport*/}
-                    <Route exact path="/" element={<Navigate to="/" />} />
-                    {/*HOME*/}
-                    <div className="container">
+                <Box sx={{ backgroundColor: "E6E6E6", display: "flex", width:"100%", height: "100%", position: "absolute"  }}>
                     <NavBar />
-                        <Route exact path="/" element={ <Home /> } />
 
-                    </div>
-                    {/*only appears when no route matches*/}
-                    {/* <Route path='*' element={<PageNotFound />} /> */}
-                </Routes>
+                    <Routes>
+                        {/*HOME*/}
+                        <Route exact path="/" element={ <Navigate to="/home" /> } />
+                        <Route exact path="/home" element={ <Home /> } />
+                        <Route exact path="/liveobservation" element={ <>aaa</> } />
+
+                        {/*only appears when no route matches*/}
+                        {/* <Route path='*' element={<PageNotFound />} /> */}
+                    </Routes>
+                </Box>
             </Router>
         </SnackbarProvider>
     )
