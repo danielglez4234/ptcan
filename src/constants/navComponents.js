@@ -5,48 +5,57 @@ import statisticsIcon from '../assets/img/statistics.svg';
 import startMapIcon from '../assets/img/start_map.svg';
 import statisticsViewIcon from '../assets/img/statistics_view.svg';
 import gearsIcon from '../assets/img/gears.svg';
+import { Home } from '@mui/icons-material';
+
 
 export const navComponents = [
     {
         title: "Home",
         description: "",
         icon: blackHoleIcon,
-        agregate: false
+        menuSeparator: false,
+        role: "Any"
     },
     {
         title: "Observation Status",
         description: "",
         icon: galaxyIcon,
-        agregate: true
+        menuSeparator: true,
+        role: "Admin"
     },
     {
         title: "Observation Results",
         description: "",
         icon: startMapIcon,
-        agregate: false
+        menuSeparator: false,
+        role: "Any"
     },
     {
         title: "Live Observation",
         description: "",
         icon: statisticsViewIcon,
-        agregate: true
+        menuSeparator: true,
+        role: "Any"
     },
     {
         title: "Pending Observations",
         description: "",
         icon: statisticsIcon,
-        agregate: false
+        menuSeparator: false,
+        role: "Any"
     },
     {
         title: "Observation Configuration",
         description: "",
         icon: controlSolorSystemIcon,
-        agregate: false
+        menuSeparator: false,
+        role: "Any"
     },
     {
         title: "Work In Progress",
         description: "",
         icon: gearsIcon,
-        agregate: true
+        menuSeparator: true,
+        role: "Any"
     }
 ]

@@ -1,9 +1,4 @@
 import telescopeLogo from '../../assets/img/telescope-logo.svg';
-import galaxyIcon from '../../assets/img/galaxy.svg';
-import galaxy1Icon from '../../assets/img/galaxy_1.svg';
-import startMapIcon from '../../assets/img/start_map.svg';
-import blackHoleIcon from '../../assets/img/blackHole.svg';
-
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -22,10 +17,11 @@ function SideBar({children, user}) {
         <aside className="main-aside">
             <nav className="main-navbar">
 
-                <Link className="navigation-link" to="/home">
                 <div className="logo-container">
-                    <img src={telescopeLogo} alt="logo" className="log-img" />
-                    <p  className="logo-text" style={{ width: expand ? "13rem" : "0px" }}>PTCAN Manager</p>
+                    <Link className="navigation-link-logo" to="/home" onClick={() => {setActiveItem("Home")}}>
+                        <img src={telescopeLogo} alt="logo" className="log-img" style={{marginRight: expand ? "17px" : "0px"}} />
+                        <p  className="logo-text" style={{ width: expand ? "13rem" : "0px" }}>PTCAN Manager</p>
+                    </Link>
                     <button 
                         className="logo-expand-arrow-button"
                         onClick={() => setExpand(curr => !curr)}
@@ -35,7 +31,6 @@ function SideBar({children, user}) {
                         }
                     </button>
                 </div>
-                </Link>
 
                 <SideBarContext.Provider value={{expand, setExpand, activeItem, setActiveItem}} >
                     <ul className="main-nav-ul">
@@ -63,6 +58,16 @@ function SideBarItem({icon, text, alert}) {
     const {expand} = useContext(SideBarContext)
     const {activeItem, setActiveItem} = useContext(SideBarContext)
     const trimText = text.toLowerCase().replace(/\s+/g, '') // used for url navigation
+
+
+    useEffect(() => {
+        const url = window.location.href
+        const title = url.substring(url.lastIndexOf('/') + 1).replace(/%20/g, '').toLowerCase()
+        const matchedComponent = navComponents.find(item => item.title.replace(/\s+/g, '').toLowerCase() === title)
+        if (matchedComponent) {
+            setActiveItem(matchedComponent.title)
+        }
+    }, [window.location.href])
 
     return (
         <Link to={`/${trimText}`} className="navigation-link">
@@ -100,7 +105,7 @@ function NavBar() {
                                     text={item.title}
                                     alert={notications[index]}
                                 />
-                    if (item.agregate)
+                    if (item.menuSeparator)
                         return (<> {Separator} {Item} </>)
                     return Item
                 })

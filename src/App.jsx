@@ -12,6 +12,30 @@ import { Box, Button } from '@mui/material';
 // import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import NavBar from './components/Navbar/NavBar';
+import { navComponents } from './constants/navComponents';
+import ObservationResults from './components/ObservationResults/ObservationResults';
+
+const getComponent = (title) => {
+    switch (title) {
+        case "Home":
+            return <Home />
+        case "Observation Status":
+            return () => <div>Observation Status</div>
+        case "Observation Results":
+            return <ObservationResults />
+        case "Live Observation":
+            return () => <div>Live Observation</div>
+        case "Pending Observations":
+            return () => <div>Pending Observations</div>
+        case "Observation Configuration":
+            return () => <div>Observation Configuration</div>
+        case "Work In Progress":
+            return () => <div>Work In Progress</div>
+        default:
+            return () => <div>404</div>
+    }
+}
+
 
 function App() {
     const notistackRef = createRef()
@@ -41,11 +65,17 @@ function App() {
                     <Routes>
                         {/*HOME*/}
                         <Route exact path="/" element={ <Navigate to="/home" /> } />
-                        <Route exact path="/home" element={ <Home /> } />
-                        <Route exact path="/liveobservation" element={ <>aaa</> } />
-
-                        {/*only appears when no route matches*/}
-                        {/* <Route path='*' element={<PageNotFound />} /> */}
+                        {
+                            navComponents.map((item, index) => {
+                                return (
+                                    <Route 
+                                        key={index} 
+                                        path={`/${item.title.toLowerCase().replace(/\s+/g, '')}`} 
+                                        element={ getComponent(item.title) } 
+                                    />
+                                )
+                            })
+                        }
                     </Routes>
                 </Box>
             </Router>

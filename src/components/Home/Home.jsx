@@ -1,10 +1,4 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Divider, Grid, Paper, Typography } from "@mui/material";
-import galaxyIcon from '../../assets/img/galaxy.svg';
-import controlSolorSystem from '../../assets/img/control_solor_system.svg';
-import statisticsIcon from '../../assets/img/statistics.svg';
-import startMapIcon from '../../assets/img/start_map.svg';
-import statisticsViewIcon from '../../assets/img/statistics_view.svg';
-import gearsIcon from '../../assets/img/gears.svg';
 import { Link } from "react-router-dom";
 import { navComponents } from "../../constants/navComponents";
 
