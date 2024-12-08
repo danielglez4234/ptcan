@@ -93,7 +93,7 @@ function NavBar() {
         name: "John Doe",
         role: "Admin"
     }
-    const notications = [false, false, true, false, true, false, true, false, true, false]
+    const notifications = [false, false, true, false, true, false, true, false, true, false]
     return ( 
         <SideBar user={user}>
             {
@@ -103,7 +103,7 @@ function NavBar() {
                                     key={index}
                                     icon={<img src={item.icon} alt="logo" className="nav-icon-svg-size" />}
                                     text={item.title}
-                                    alert={notications[index]}
+                                    alert={notifications[index]}
                                 />
                     if (item.menuSeparator)
                         return (<> {Separator} {Item} </>)
