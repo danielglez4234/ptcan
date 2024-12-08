@@ -10,12 +10,13 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Link } from 'react-router-dom';
+import { navComponents } from '../../constants/navComponents';
 
 const SideBarContext = createContext()
 
 function SideBar({children, user}) {
     const [expand, setExpand] = useState(false)
-    const [activeItem, setActiveItem] = useState("Observation Status")
+    const [activeItem, setActiveItem] = useState("Home")
 
     return ( 
         <aside className="main-aside">
@@ -87,13 +88,24 @@ function NavBar() {
         name: "John Doe",
         role: "Admin"
     }
+    const notications = [false, false, true, false, true, false, true, false, true, false]
     return ( 
         <SideBar user={user}>
-            <SideBarItem icon={<img src={blackHoleIcon} alt="logo" className="nav-icon-svg-size" />} text="Home" alert={false} />
-            <SideBarItem icon={<img src={galaxyIcon} alt="logo" className="nav-icon-svg-size" />} text="Observation Status" alert={false} />
-            <SideBarItem icon={<img src={startMapIcon} alt="logo" className="nav-icon-svg-size" />} text="Observation Results" alert={true} />
-            <hr className="nav-separator" />
-            <SideBarItem icon={<img src={galaxy1Icon} alt="logo" className="nav-icon-svg-size" />} text="Live Observation" alert={true} />
+            {
+                navComponents.map((item, index) => {
+                    const Separator = <hr className="nav-separator" />
+                    const Item = <SideBarItem
+                                    key={index}
+                                    icon={<img src={item.icon} alt="logo" className="nav-icon-svg-size" />}
+                                    text={item.title}
+                                    alert={notications[index]}
+                                />
+                    if (item.agregate)
+                        return (<> {Separator} {Item} </>)
+                    return Item
+                })
+            }
+            {/* <hr className="nav-separator" /> */}
         </SideBar>
     )
 }
