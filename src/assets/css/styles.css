@@ -6,8 +6,8 @@ body {
 }
 
 .main-aside {
-    position: static;
     margin: 10px;
+    z-index: 100;
 }
 
 .nav-icon-ui-size  {
@@ -157,7 +157,8 @@ body {
 }
 
 .user-info-icon {
-    font-size: 32px; 
+    font-size: 32px !important;
+    margin-left: 6px;
     color: #413B3B;
 }
 

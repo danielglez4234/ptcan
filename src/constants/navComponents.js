@@ -18,35 +18,35 @@ export const navComponents = [
     },
     {
         title: "Observation Status",
-        description: "",
+        description: "Status of the observations, including the pending, in progress, and completed observations.",
         icon: galaxyIcon,
         menuSeparator: true,
         role: "Admin"
     },
     {
         title: "Observation Results",
-        description: "",
+        description: "Results of the observations, including the data and the images taken.",
         icon: startMapIcon,
         menuSeparator: false,
         role: "Any"
     },
     {
         title: "Live Observation",
-        description: "",
+        description: "Live observation of the telescope. This is the main feature of the system.",
         icon: statisticsViewIcon,
         menuSeparator: true,
         role: "Any"
     },
     {
         title: "Pending Observations",
-        description: "",
+        description: "List of pending observations. These are the observations that are waiting to be executed",
         icon: statisticsIcon,
         menuSeparator: false,
         role: "Any"
     },
     {
         title: "Observation Configuration",
-        description: "",
+        description: "Configuration of the observation. This includes the telescope, the camera, the filters, etc.",
         icon: controlSolorSystemIcon,
         menuSeparator: false,
         role: "Any"
