@@ -47,7 +47,7 @@ function CardItem({ title, description, image }) {
 }
 
 function ObservationResults() {
-    const url = window.location.href;
+    const url = window.location.href
     const title = url.substring(url.lastIndexOf('/') + 1).replace(/%20/g, '').toLowerCase()
     const component = navComponents.find(comp => comp.title.replace(/\s+/g, '').toLowerCase() === title)
 
