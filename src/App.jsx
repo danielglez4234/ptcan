@@ -15,13 +15,14 @@ import NavBar from './components/Navbar/NavBar';
 import { navComponents } from './constants/navComponents';
 import ObservationResults from './components/ObservationResults/ObservationResults';
 import PendingObservations from './components/PendingObservations/PendingObservations';
+import ObservationStatus from './components/ObservationStatus/ObservationStatus';
 
 const getComponent = (title) => {
     switch (title) {
         case "Home":
             return <Home />
         case "Observation Status":
-            return () => <div>Observation Status</div>
+            return <ObservationStatus />
         case "Observation Results":
             return <ObservationResults />
         case "Live Observation":
